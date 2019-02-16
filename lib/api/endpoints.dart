@@ -7,7 +7,7 @@ class Endpoints {
         '/discover/movie?api_key='
         '$TMDB_API_KEY'
         '&language=en-US&sort_by=popularity'
-        '.desc&include_adult=false&include_video=false&page'
+        '.desc&include_adult=true&include_video=true&page'
         '=$page';
   }
 
@@ -15,28 +15,28 @@ class Endpoints {
     return '$TMDB_API_BASE_URL'
         '/movie/now_playing?api_key='
         '$TMDB_API_KEY'
-        '&include_adult=false&page=$page';
+        '&include_adult=true&page=$page';
   }
 
   static String topRatedUrl(int page) {
     return '$TMDB_API_BASE_URL'
         '/movie/top_rated?api_key='
         '$TMDB_API_KEY'
-        '&include_adult=false&page=$page';
+        '&include_adult=true&page=$page';
   }
 
   static String popularMoviesUrl(int page) {
     return '$TMDB_API_BASE_URL'
         '/movie/popular?api_key='
         '$TMDB_API_KEY'
-        '&include_adult=false&page=$page';
+        '&include_adult=true&page=$page';
   }
 
   static String upcomingMoviesUrl(int page, String region) {
     return '$TMDB_API_BASE_URL'
         '/movie/upcoming?api_key='
         '$TMDB_API_KEY'
-        '&include_adult=false&page=$page&region=$region';
+        '&include_adult=true&page=$page'; //&region=$region';
   }
 
   static String movieDetailsUrl(int movieId) {
@@ -49,12 +49,12 @@ class Endpoints {
   }
 
   static String getMoviesForGenre(int genreId, int page) {
-    // https://api.themoviedb.org/3/discover/movie?api_key=135401ad80768ff3cc3e4abc7cee2874&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=18
+    // https://api.themoviedb.org/3/discover/movie?api_key=135401ad80768ff3cc3e4abc7cee2874&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1&with_genres=18
     return '$TMDB_API_BASE_URL/discover/movie?api_key=$TMDB_API_KEY'
         '&language=en-US'
         '&sort_by=popularity.desc'
-        '&include_adult=false'
-        '&include_video=false'
+        '&include_adult=true'
+        '&include_video=true'
         '&page=$page'
         '&with_genres=$genreId';
   }
@@ -62,6 +62,12 @@ class Endpoints {
   static String movieReviewsUrl(int movieId, int page) {
     return '$TMDB_API_BASE_URL/movie/$movieId/reviews?api_key=$TMDB_API_KEY'
         '&language=en-US&page=$page';
+  }
+
+  static getMovieRecomindation(int movieId, int page) {
+    return '$TMDB_API_BASE_URL/movie/$movieId/recommendations?api_key=$TMDB_API_KEY'
+        '&language=en-US&page=$page';
+    //"https://api.themoviedb.org/3/movie/438808/recommendations?api_key=57a21e38b26baa1dffc4f34ae88ca876&language=en-US&page=2"
   }
 
   static String omdbMovieByTitleAndYearUrl(String title, String year) {

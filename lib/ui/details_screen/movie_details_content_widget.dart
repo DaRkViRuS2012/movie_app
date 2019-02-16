@@ -6,7 +6,6 @@ import 'package:movie_app/ui/details_screen/movie_details_header_widget.dart';
 import 'package:movie_app/ui/details_screen/movie_extra_content_widget.dart';
 import 'package:movie_app/utils/app_colors.dart';
 import 'package:movie_app/utils/app_styles.dart';
-import 'package:movie_app/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class MovieDetailsContentWidget extends StatelessWidget {
@@ -22,7 +21,11 @@ class MovieDetailsContentWidget extends StatelessWidget {
       padding: EdgeInsets.only(top: 10),
       child: Text(
         movieDetails.getOverview,
-        style: AppStyles.STYLE_SUBTITLE,
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            shadows: [AppColors.shadow]),
         textAlign: TextAlign.justify,
       ),
     );
@@ -99,29 +102,6 @@ class MovieDetailsContentWidget extends StatelessWidget {
         children: stars);
   }
 
-  Widget titleWidget() {
-    return Container(
-      padding: EdgeInsets.all(8.0),
-      child: Text(
-        'Annihilation',
-        style: AppStyles.STYLE_SUBTITLE,
-      ),
-    );
-  }
-
-  Widget infoContriner(theme) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          titleWidget(),
-          rateWidget(theme),
-          timeWidget(),
-          descriptionWidget()
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     //use a ListView to make the screen vertically scrollable
@@ -131,12 +111,12 @@ class MovieDetailsContentWidget extends StatelessWidget {
         buildTitle(),
         generWidget(),
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
           child: buildMinorDetailsRow(),
         ),
         //buildOverview(),
         Padding(
-          padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+          padding: const EdgeInsets.only(left: 32.0, right: 32.0),
           child: descriptionWidget(),
         ),
         buildHorizontalDivider(),
@@ -148,7 +128,7 @@ class MovieDetailsContentWidget extends StatelessWidget {
   Widget buildHeaderImage(BuildContext context) {
     return SizedBox(
       //0.32 is just a magic number that makes things not overlap even in smaller screens
-      height: 250.0, //MediaQuery.of(context).size.height * 0.32,
+      height: MediaQuery.of(context).size.height * 0.32,
       child: MovieDetailsHeaderWidget(
         backdropPath: movieDetails.movieBasic.backdropPath,
       ),
@@ -167,9 +147,13 @@ class MovieDetailsContentWidget extends StatelessWidget {
   Widget buildMinorDetailsRow() {
     return CrossFadeWidgets(
         childOne: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             buildReleaseDate(),
+            getDotSeparator(),
             buildRunningTime(),
+            getDotSeparator(),
             buildDirectorName(),
           ],
         ),
@@ -222,21 +206,22 @@ class MovieDetailsContentWidget extends StatelessWidget {
     var formattedRunningTime = movieDetails.getFormattedRunningTime();
 
     if (formattedRunningTime != null && formattedRunningTime.isNotEmpty) {
-      return Row(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-            child: Text(
-              formattedRunningTime,
-              style: TextStyle(
-                color: AppColors.lightWhite,
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+      return Expanded(
+        flex: 2,
+        child: ListTile(
+          title: Text(
+            "Duration",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: AppColors.lightWhite),
           ),
-          getDotSeparator(),
-        ],
+          subtitle: Text(formattedRunningTime,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              )),
+        ),
       );
     }
     return Container();
@@ -245,35 +230,62 @@ class MovieDetailsContentWidget extends StatelessWidget {
   buildReleaseDate() {
     var formattedReleaseDate = movieDetails.getFormattedReleaseDate();
     if (formattedReleaseDate != null && formattedReleaseDate.isNotEmpty) {
-      return Column(
-        children: <Widget>[
-          Text('Date'),
-          Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(formattedReleaseDate,
-                    style: TextStyle(
-                      color: AppColors.lightWhite,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    )),
+      return Expanded(
+        flex: 1,
+        child: Container(
+          child: ListTile(
+            title: Text(
+              "Date",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: AppColors.lightWhite,
               ),
-              getDotSeparator(),
-            ],
+            ),
+            subtitle: Text(formattedReleaseDate,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                )),
           ),
-        ],
+        ),
       );
+      // // Padding(
+      // //   padding: const EdgeInsets.all(8.0),
+      // //   child: Text(formattedReleaseDate,
+      // //       style: TextStyle(
+      // //         color: AppColors.lightWhite,
+      // //         fontSize: 14,
+      // //         fontWeight: FontWeight.bold,
+      // //       )),
+      // // ),
+
     }
     return Container();
   }
 
   buildDirectorName() {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text("directed by ${movieDetails.getDirector()}",
-            style: TextStyle(fontSize: 13.0)),
+      flex: 1,
+      child: ListTile(
+        title: Text(
+          "Adult",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: AppColors.lightWhite,
+          ),
+        ),
+        subtitle: Text(
+            movieDetails.adult != null
+                ? (movieDetails.adult ? "+18" : "No")
+                : "",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            )),
       ),
     );
   }

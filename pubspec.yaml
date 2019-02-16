@@ -13,15 +13,16 @@ dependencies:
   json_annotation: 1.2.0
   flutter:
     sdk: flutter
-  flutter_advanced_networkimage: 0.3.9
+  flutter_advanced_networkimage: ^0.4.8
   cupertino_icons: 0.1.2
   rxdart: 0.18.1
-  flutter_svg: 0.5.3
+  flutter_svg: ^0.10.2
   url_launcher: 3.0.3
   intl: 0.15.7
   package_info: ^0.3.2
   flutter_swiper: ^1.1.4
   auto_size_text: ^0.3.0
+  
 
   
 dev_dependencies:

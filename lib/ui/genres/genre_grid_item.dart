@@ -2,6 +2,7 @@ import 'package:movie_app/models/tmdb_genres.dart';
 import 'package:movie_app/navigation/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:movie_app/utils/app_colors.dart';
 
 class GenreGridItem extends StatelessWidget {
   final TMDBGenre genre;
@@ -11,11 +12,15 @@ class GenreGridItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(1.0),
+      padding: const EdgeInsets.all(8.0),
       child: Container(
+        decoration: BoxDecoration(
+          // boxShadow: [AppColors.shadow],
+          gradient: AppColors.gradiant_decoration,
+        ),
         child: FlatButton(
-          textColor: Theme.of(context).accentColor,
-          color: Theme.of(context).primaryColor,
+          // textColor: Theme.of(context).accentColor,
+          color: Colors.transparent,
           onPressed: () {
             Router.goToMoviesByGenreList(context, genre);
           },
@@ -27,7 +32,7 @@ class GenreGridItem extends StatelessWidget {
                 child: Text(
                   "${genre.name}",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16.0, color: Theme.of(context).accentColor),
+                  style: TextStyle(fontSize: 16.0, color: Colors.white),
                 ),
               ),
             ),

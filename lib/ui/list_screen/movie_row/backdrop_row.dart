@@ -2,15 +2,16 @@ import 'package:movie_app/constants/api_constants.dart';
 import 'package:movie_app/models/tmdb_movie_basic.dart';
 import 'package:movie_app/utils/image_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_networkimage/flutter_advanced_networkimage.dart';
-import 'package:flutter_advanced_networkimage/transition_to_image.dart';
+import 'package:flutter_advanced_networkimage/transition.dart';
+import 'package:flutter_advanced_networkimage/provider.dart';
 
 class MovieRow extends StatelessWidget {
   final TMDBMovieBasic movie;
 
   MovieRow(this.movie);
 
-  final defaultStyle = TextStyle(fontSize: 30.0, color: Colors.white, fontWeight: FontWeight.bold);
+  final defaultStyle = TextStyle(
+      fontSize: 30.0, color: Colors.white, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,11 @@ class MovieRow extends StatelessWidget {
     return DefaultTextStyle(
       style: defaultStyle,
       child: Stack(
-        children: <Widget>[buildMovieBackdrop(movie), buildTitle(movie), buildRating(movie)],
+        children: <Widget>[
+          buildMovieBackdrop(movie),
+          buildTitle(movie),
+          buildRating(movie)
+        ],
       ),
     );
   }
@@ -44,7 +49,8 @@ class MovieRow extends StatelessWidget {
           decoration: textDecoration(),
           child: Row(
             children: <Widget>[
-              Text("${movie.voteAverage}", style: defaultStyle.copyWith(color: Colors.yellow)),
+              Text("${movie.voteAverage}",
+                  style: defaultStyle.copyWith(color: Colors.yellow)),
               Text("/10", style: defaultStyle),
             ],
           ),
@@ -70,13 +76,15 @@ class MovieRow extends StatelessWidget {
 
   ExpansionTile buildExpansionTile(TMDBMovieBasic movie) {
     return ExpansionTile(
-        title: Text("${movie.title}", style: TextStyle(fontSize: 30.0, color: Colors.white)),
+        title: Text("${movie.title}",
+            style: TextStyle(fontSize: 30.0, color: Colors.white)),
         children: [
           SizedBox(
             height: 100.0,
             child: ListTile(
                 title: SingleChildScrollView(
-              child: Text(movie.overview, style: TextStyle(fontSize: 16.0, color: Colors.white)),
+              child: Text(movie.overview,
+                  style: TextStyle(fontSize: 16.0, color: Colors.white)),
             )),
           )
         ]);
@@ -84,7 +92,7 @@ class MovieRow extends StatelessWidget {
 
   Widget getAdvancedNetworkImage(TMDBMovieBasic movie) {
     return new TransitionToImage(
-      AdvancedNetworkImage(backdropImagePath(movie)),
+      image: AdvancedNetworkImage(backdropImagePath(movie)),
       placeholder: LinearProgressIndicator(),
     );
   }

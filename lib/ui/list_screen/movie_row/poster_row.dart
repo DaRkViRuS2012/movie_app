@@ -10,7 +10,7 @@ import 'package:movie_app/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-const String POSTER_SIZE = SIZE_ORGINAL;
+const String POSTER_SIZE = SIZE_LARGE;
 
 class PosterRow extends StatelessWidget {
   final TMDBMovieBasic movie;
@@ -90,22 +90,32 @@ class PosterRow extends StatelessWidget {
   }
 
   Widget titleWidget() {
-    return Container(
-      padding: EdgeInsets.all(8.0),
-      child: AutoSizeText(
-        movie.title,
-        style: AppStyles.STYLE_TITLE,
-        maxLines: 2,
-      ),
-    );
+    return Hero(
+        child: Material(
+            color: Colors.transparent,
+            child: AutoSizeText(
+              movie.title,
+              style: AppStyles.STYLE_TITLE,
+              maxLines: 2,
+            )),
+        tag: "${movie.id}-${movie.title}");
+
+    // Container(
+    //   padding: EdgeInsets.all(4.0),
+    //   child: AutoSizeText(
+    //     movie.title,
+    //     style: AppStyles.STYLE_TITLE,
+    //     maxLines: 2,
+    //   ),
+    // );
   }
 
   Widget imageContainer() {
     return Container(
       decoration: BoxDecoration(
-          // color: Colors.red,
+          color: Colors.white,
           boxShadow: [AppColors.shadow],
-          borderRadius: BorderRadius.circular(10)),
+          borderRadius: BorderRadius.circular(10.0)),
       child: PosterWidget(
         id: movie.id,
         imagePath: movie.posterPath,
@@ -136,7 +146,6 @@ class PosterRow extends StatelessWidget {
               ),
             ],
           ),
-          descriptionWidget(),
         ],
       ),
     );
@@ -165,20 +174,22 @@ class PosterRow extends StatelessWidget {
     return DefaultTextStyle(
         style: STYLE_TITLE,
         child: Container(
-          padding: const EdgeInsets.only(top: 16.0),
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width * 0.85,
+          padding: const EdgeInsets.only(top: 8.0),
           child: Padding(
             padding: const EdgeInsets.only(left: 16.0, right: 16),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Expanded(flex: 3, child: imageContainer()),
+                Expanded(flex: 4, child: imageContainer()),
                 // SizedBox(height: 32),
                 Expanded(
                   flex: 2,
                   child: Container(
                     // color: Colors.red,
-                    margin: const EdgeInsets.only(top: 24.0, bottom: 24.0),
+                    margin: const EdgeInsets.only(top: 16.0, bottom: 16.0),
                     child: infoContriner(Theme.of(context)),
                   ),
                 )

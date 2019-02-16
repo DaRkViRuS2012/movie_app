@@ -23,27 +23,41 @@ class PersonScreenState extends State<PersonScreen> {
   @override
   Widget build(BuildContext context) {
     personBloc = BlocProvider.of<PersonBloc>(context);
-    return Scaffold(
-      body: StreamBuilder(
-        stream: personBloc.stream,
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          var data = snapshot.data;
-          return Column(children: <Widget>[
-            Expanded(
-              child: Stack(
-                key: Key('content'),
-                children: <Widget>[
-                  PersonWidget(
-                      cast: this.widget.cast,
-                      errorMessage: data is PersonFailed ? data.error : "",
-                      showLoading: data is PersonLoading,
-                      person: data is PersonPopulated ? data.tmdbPerson : null)
-                ],
-              ),
-            ),
-          ]);
-        },
-      ),
+    return Stack(
+      children: <Widget>[
+        Scaffold(
+          body: StreamBuilder(
+            stream: personBloc.stream,
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              var data = snapshot.data;
+              return Column(children: <Widget>[
+                Expanded(
+                  child: Stack(
+                    key: Key('content'),
+                    children: <Widget>[
+                      PersonWidget(
+                          cast: this.widget.cast,
+                          errorMessage: data is PersonFailed ? data.error : "",
+                          showLoading: data is PersonLoading,
+                          person:
+                              data is PersonPopulated ? data.tmdbPerson : null)
+                    ],
+                  ),
+                ),
+              ]);
+            },
+          ),
+        ),
+        Positioned(
+          top: 0.0,
+          left: 0.0,
+          right: 0.0,
+          child: AppBar(
+            elevation: 0.0,
+            backgroundColor: Colors.transparent,
+          ),
+        )
+      ],
     );
   }
 

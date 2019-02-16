@@ -30,13 +30,16 @@ class MovieDetailsWidget extends StatelessWidget {
     return Container(
         child: Stack(
       children: <Widget>[
-        // BlurredImage(
-        //   imagePath: movieDetails.movieBasic.posterPath,
-        //   imageSize: backgroundSize,
-        // ),
-        Container(
-          decoration: BoxDecoration(gradient: AppColors.gradiant_decoration),
+        Hero(
+          tag: "${movieDetails.id}-imagePath",
+          child: BlurredImage(
+            imagePath: movieDetails.movieBasic.posterPath,
+            imageSize: backgroundSize,
+          ),
         ),
+        // Container(
+        //   decoration: BoxDecoration(gradient: AppColors.gradiant_decoration),
+        // ),
         Scaffold(
           backgroundColor: Colors.transparent,
           body: MovieDetailsContentWidget(

@@ -56,17 +56,17 @@ class _ImageLoaderState extends State<ImageLoader> {
     );
   }
 
-  Widget getPlaceholder() {
-    Widget placeholder;
+  AssetImage getPlaceholder() {
+    AssetImage placeholder;
     switch (widget.imageType) {
       case IMAGE_TYPE.PROFILE:
-        placeholder = profilePlaceholder;
+        placeholder = AssetImage("assets/person_placeholder.png");
         break;
       case IMAGE_TYPE.POSTER:
-        placeholder = moviePlaceholder;
+        placeholder = AssetImage("assets/movie_placeholder.png");
         break;
       case IMAGE_TYPE.BACKDROP:
-        placeholder = moviePlaceholder;
+        placeholder = AssetImage("assets/movie_placeholder.png");
         break;
     }
     return placeholder;
@@ -82,9 +82,22 @@ class _ImageLoaderState extends State<ImageLoader> {
       );
     } else {
       if (_loaded) {
-        return image;
+        return Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                image: DecorationImage(
+                  image: NetworkImage(ImageHelper.getImagePath(
+                    widget.imagePath,
+                    widget.size,
+                  )),
+                  fit: BoxFit.fill,
+                )));
       } else {
-        return getPlaceholder();
+        return Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: getPlaceholder(), fit: BoxFit.contain)),
+        );
       }
     }
   }

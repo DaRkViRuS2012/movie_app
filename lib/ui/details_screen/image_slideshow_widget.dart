@@ -27,27 +27,41 @@ class ImageSlideshowWidgetState extends State<ImageSlideshowWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: PageView.builder(
-          controller: pageController,
-          itemCount: widget.images.length - 1,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) {
-            String imagePath = widget.images[index + 1].filePath; //index+1 to ignore first image as
-            return Center(
-              child: Hero(
-                child: ImageLoader(
-                  imageType: IMAGE_TYPE.BACKDROP,
-                  imagePath: imagePath,
-                  size: BACKDROP_SIZES[SIZE_LARGE],
-                ),
-                tag: "$imagePath + $index}",
-              ),
-            );
-          },
+    return Stack(
+      children: <Widget>[
+        Scaffold(
+          body: Container(
+            child: PageView.builder(
+              controller: pageController,
+              itemCount: widget.images.length - 1,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int index) {
+                String imagePath = widget.images[index + 1]
+                    .filePath; //index+1 to ignore first image as
+                return Center(
+                  child: Hero(
+                    child: ImageLoader(
+                      imageType: IMAGE_TYPE.BACKDROP,
+                      imagePath: imagePath,
+                      size: BACKDROP_SIZES[SIZE_LARGE],
+                    ),
+                    tag: "$imagePath + $index}",
+                  ),
+                );
+              },
+            ),
+          ),
         ),
-      ),
+        Positioned(
+          top: 0.0,
+          left: 0.0,
+          right: 0.0,
+          child: AppBar(
+            elevation: 0.0,
+            backgroundColor: Colors.transparent,
+          ),
+        )
+      ],
     );
   }
 

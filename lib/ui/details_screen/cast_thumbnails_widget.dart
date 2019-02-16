@@ -31,14 +31,17 @@ class CastThumbnailsWidget extends StatelessWidget {
         size: const Size.fromHeight(castHeight),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: movieDetails.credits != null ? movieDetails.credits.cast.length : 8,
+          itemCount: movieDetails.credits != null
+              ? movieDetails.credits.cast.length
+              : 8,
           itemBuilder: (BuildContext context, int index) {
-            Cast cast = movieDetails.hasData ? movieDetails.credits.cast[index] : null;
+            Cast cast =
+                movieDetails.hasData ? movieDetails.credits.cast[index] : null;
             return Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Expanded(child: _buildAvatar(context, index, cast)),
+                _buildAvatar(context, index, cast),
                 _buildCastName(cast),
               ],
             );
@@ -50,42 +53,43 @@ class CastThumbnailsWidget extends StatelessWidget {
 
   Widget _buildAvatar(BuildContext context, int index, Cast cast) {
     return Container(
+        height: 200.0,
         child: Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: () => Router.goToPersonDetailsScreen(context, cast),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              _buildPhotoThumbnail(cast, index),
-            ],
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () => Router.goToPersonDetailsScreen(context, cast),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  _buildPhotoThumbnail(cast, index),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
-    ));
+        ));
   }
 
   Widget _buildCastName(Cast cast) {
     return Container(
-			width: 140.0,
-			padding: const EdgeInsets.only(top: 5.0),
-        child: Column(
-          children: <Widget>[
-            _buildName(cast),
-            _buildCharacter(cast),
-          ],
-        ),
-      );
+      width: 140.0,
+      padding: const EdgeInsets.only(top: 5.0),
+      child: Column(
+        children: <Widget>[
+          _buildName(cast),
+          _buildCharacter(cast),
+        ],
+      ),
+    );
   }
 
   Widget _buildName(Cast cast) {
     return Center(
       child: Text(
         cast.name,
-        style: TextStyle(fontSize: 12.0),
+        style: TextStyle(fontSize: 14.0, color: Colors.white),
       ),
     );
   }
@@ -96,7 +100,7 @@ class CastThumbnailsWidget extends StatelessWidget {
         child: Text(
           "(${cast.character})",
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 12.0),
+          style: TextStyle(fontSize: 12.0, color: Colors.white),
         ),
       );
     }
@@ -111,7 +115,7 @@ class CastThumbnailsWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(2.0),
             child: ClipRRect(
-                borderRadius: BorderRadius.circular(30.0),
+                borderRadius: BorderRadius.circular(15.0),
                 child: ImageLoader(
                   imagePath: cast.profilePath,
                   imageType: IMAGE_TYPE.PROFILE,

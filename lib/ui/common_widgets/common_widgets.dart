@@ -12,6 +12,7 @@ Widget getDotSeparator() {
 Widget getAppBar({title, context, tabController, myTabs}) {
   return AppBar(
       actions: buildActions(context),
+      centerTitle: true,
       title: new Text(title),
       backgroundColor: Colors.transparent,
       elevation:

@@ -3,9 +3,6 @@ import 'package:movie_app/bloc/bloc_provider.dart';
 import 'package:movie_app/constants/api_constants.dart';
 import 'package:movie_app/ui/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/ui/movies_pager_view/movies_pager_view.dart';
-import 'utils/app_colors.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 void main() => runApp(new MyApp());
 

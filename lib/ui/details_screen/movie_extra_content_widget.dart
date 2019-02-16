@@ -5,14 +5,16 @@ import 'package:movie_app/ui/common_widgets/loading_widget.dart';
 import 'package:movie_app/ui/details_screen/cast_thumbnails_widget.dart';
 import 'package:movie_app/ui/details_screen/movie_details_images_widget.dart';
 import 'package:movie_app/ui/details_screen/movie_details_ratings_widget.dart';
+import 'package:movie_app/ui/details_screen/movie_details_recomindations_widget.dart';
 import 'package:movie_app/utils/styles.dart';
 import 'package:flutter/widgets.dart';
 
-
 Container buildSubtitleForDetailsPage(String title) {
-	return Container(
-			margin: const EdgeInsets.only(left: 8.0, bottom: 18.0),
-			child: Align(alignment: Alignment.topLeft, child: Text(title, style: STYLE_SUBTITLE)));
+  return Container(
+      margin: const EdgeInsets.only(left: 8.0, bottom: 18.0),
+      child: Align(
+          alignment: Alignment.topLeft,
+          child: Text(title, style: STYLE_SUBTITLE)));
 }
 
 class MovieExtraContentWidget extends StatelessWidget {
@@ -30,7 +32,8 @@ class MovieExtraContentWidget extends StatelessWidget {
     if (movieDetails.hasData) {
       widgetList.addAll(extraChildren());
     } else if (movieDetails.hasErrors()) {
-      widgetList.add(ErrorsWidget(visible: true, error: movieDetails.status_message));
+      widgetList
+          .add(ErrorsWidget(visible: true, error: movieDetails.status_message));
     } else {
       widgetList.add(getLoadingWidget());
     }
@@ -44,9 +47,11 @@ class MovieExtraContentWidget extends StatelessWidget {
 
   List<Widget> extraChildren() {
     return [
-      MovieDetailsRatingsWidget(movieDetails: movieDetails, movieDetailsBloc: movieDetailsBloc),
+      MovieDetailsRatingsWidget(
+          movieDetails: movieDetails, movieDetailsBloc: movieDetailsBloc),
       CastThumbnailsWidget(movieDetails: movieDetails),
       MovieDetailsImagesWidget(movieDetails: movieDetails),
+      MoviesRecomendationListWidget(movieId: movieDetails.id),
     ];
   }
 
@@ -57,5 +62,3 @@ class MovieExtraContentWidget extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,9 +1,11 @@
 import 'dart:ui';
 
+import 'package:movie_app/constants/api_secrets.dart';
 import 'package:movie_app/navigation/router.dart';
 import 'package:movie_app/ui/info_view/info_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_youtube/flutter_youtube.dart';
 
 Widget getDotSeparator() {
   return Text("·", style: TextStyle(fontSize: 23.0));
@@ -26,7 +28,11 @@ Widget getAppBar({title, context, tabController, myTabs}) {
 }
 
 List<Widget> buildActions(context) {
-  return <Widget>[searchAction(context), infoAction(context)];
+  return <Widget>[
+    searchAction(context),
+    infoAction(context),
+    playViedo(context)
+  ];
 }
 
 IconButton searchAction(context) {
@@ -40,6 +46,19 @@ IconButton infoAction(context) {
       icon: Icon(Icons.info_outline),
       onPressed: () => showModalBottomSheet(
           context: context, builder: (BuildContext context) => InfoView()));
+}
+
+IconButton playViedo(context) {
+  return IconButton(
+      icon: Icon(Icons.play_arrow),
+      onPressed: () {
+        FlutterYoutube.playYoutubeVideoById(
+            apiKey: YOUTUBE_API_KEY,
+            videoId: "cGCduKl5q90",
+            autoPlay: true, //default falase
+            fullScreen: true //default false
+            );
+      });
 }
 
 Widget buildHorizontalDivider(

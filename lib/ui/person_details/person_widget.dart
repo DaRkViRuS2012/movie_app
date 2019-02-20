@@ -257,15 +257,20 @@ class PersonWidget extends StatelessWidget {
     return Container();
   }
 
-  Expanded _buildFilmographyList(
+  _buildFilmographyList(
       List<MovieCreditsAsCast> movieCredits, double movieCreditHeight) {
-    return Expanded(
+    return Container(
+      // color: Colors.red,
+      height: 200.0,
       child: ListView.builder(
         itemCount: movieCredits.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: ((BuildContext context, int index) {
-          return _buildMoviePoster(
-              movieCredits[index], movieCreditHeight, context);
+          return Container(
+            width: 175.0,
+            child: _buildMoviePoster(
+                movieCredits[index], movieCreditHeight, context),
+          );
         }),
       ),
     );

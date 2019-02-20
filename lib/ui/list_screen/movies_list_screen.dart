@@ -11,6 +11,7 @@ import 'package:movie_app/ui/tabs/tab_object.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+// ca-app-pub-6051100238610130~1117806013
 class MoviesListScreen extends StatefulWidget {
   final TMDBGenre genre;
 

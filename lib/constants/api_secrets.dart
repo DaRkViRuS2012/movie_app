@@ -1,2 +1,3 @@
 final TMDB_API_KEY = "57a21e38b26baa1dffc4f34ae88ca876";
 final OMDB_API_KEY = "5fa46a32";
+final YOUTUBE_API_KEY = "AIzaSyB_JIEv8G43sr6KVN6CA85O67MuJwKzcMo";

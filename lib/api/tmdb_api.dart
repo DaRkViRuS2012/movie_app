@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:movie_app/api/endpoints.dart';
 import 'package:movie_app/models/tmdb_genres.dart';
 import 'package:movie_app/models/tmdb_movie_details.dart';
+import 'package:movie_app/models/tmdb_movie_response.dart';
 import 'package:movie_app/models/tmdb_movies_response.dart';
 import 'package:movie_app/models/tmdb_person.dart';
 import 'package:movie_app/models/tmdb_person_search_response.dart';
@@ -78,6 +79,11 @@ class TMDBApi {
   Future<TMDBPerson> getPerson({int personId}) async {
     final response = await _makeRequest((Endpoints.getPerson(personId)));
     return TMDBPerson.fromJson(json.decode(response.body));
+  }
+
+  Future<TmdbVediosResponse> getVedios({int movieId}) async {
+    final response = await _makeRequest((Endpoints.getVedios(movieId)));
+    return TmdbVediosResponse.fromJson(json.decode(response.body));
   }
 
   Future<http.Response> _makeRequest(String url) async {

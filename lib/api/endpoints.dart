@@ -7,7 +7,7 @@ class Endpoints {
         '/discover/movie?api_key='
         '$TMDB_API_KEY'
         '&language=en-US&sort_by=popularity'
-        '.desc&include_adult=true&include_video=true&page'
+        '.desc&include_adult=false&include_video=true&page'
         '=$page';
   }
 
@@ -15,28 +15,28 @@ class Endpoints {
     return '$TMDB_API_BASE_URL'
         '/movie/now_playing?api_key='
         '$TMDB_API_KEY'
-        '&include_adult=true&page=$page';
+        '&include_adult=false&page=$page';
   }
 
   static String topRatedUrl(int page) {
     return '$TMDB_API_BASE_URL'
         '/movie/top_rated?api_key='
         '$TMDB_API_KEY'
-        '&include_adult=true&page=$page';
+        '&include_adult=false&page=$page';
   }
 
   static String popularMoviesUrl(int page) {
     return '$TMDB_API_BASE_URL'
         '/movie/popular?api_key='
         '$TMDB_API_KEY'
-        '&include_adult=true&page=$page';
+        '&include_adult=false&page=$page';
   }
 
   static String upcomingMoviesUrl(int page, String region) {
     return '$TMDB_API_BASE_URL'
         '/movie/upcoming?api_key='
         '$TMDB_API_KEY'
-        '&include_adult=true&page=$page'; //&region=$region';
+        '&include_adult=false&page=$page'; //&region=$region';
   }
 
   static String movieDetailsUrl(int movieId) {
@@ -53,7 +53,7 @@ class Endpoints {
     return '$TMDB_API_BASE_URL/discover/movie?api_key=$TMDB_API_KEY'
         '&language=en-US'
         '&sort_by=popularity.desc'
-        '&include_adult=true'
+        '&include_adult=false'
         '&include_video=true'
         '&page=$page'
         '&with_genres=$genreId';
@@ -65,7 +65,7 @@ class Endpoints {
   }
 
   static getMovieRecomindation(int movieId, int page) {
-    return '$TMDB_API_BASE_URL/movie/$movieId/recommendations?api_key=$TMDB_API_KEY'
+    return '$TMDB_API_BASE_URL/movie/$movieId/similar?api_key=$TMDB_API_KEY'
         '&language=en-US&page=$page';
     //"https://api.themoviedb.org/3/movie/438808/recommendations?api_key=57a21e38b26baa1dffc4f34ae88ca876&language=en-US&page=2"
   }
@@ -84,5 +84,10 @@ class Endpoints {
 
   static getPerson(int personId) {
     return "$TMDB_API_BASE_URL/person/$personId?api_key=$TMDB_API_KEY&append_to_response=movie_credits";
+  }
+
+  static getVedios(int movieId) {
+    //https://api.themoviedb.org/3/movie/299537/videos?api_key=57a21e38b26baa1dffc4f34ae88ca876&language=en-US
+    return "$TMDB_API_BASE_URL/movie/$movieId/videos?api_key=$TMDB_API_KEY&language=en-US";
   }
 }

@@ -6,6 +6,7 @@ import 'package:movie_app/ui/details_screen/cast_thumbnails_widget.dart';
 import 'package:movie_app/ui/details_screen/movie_details_images_widget.dart';
 import 'package:movie_app/ui/details_screen/movie_details_ratings_widget.dart';
 import 'package:movie_app/ui/details_screen/movie_details_recomindations_widget.dart';
+import 'package:movie_app/ui/details_screen/movie_details_vedios_widget.dart';
 import 'package:movie_app/utils/styles.dart';
 import 'package:flutter/widgets.dart';
 
@@ -52,6 +53,7 @@ class MovieExtraContentWidget extends StatelessWidget {
       CastThumbnailsWidget(movieDetails: movieDetails),
       MovieDetailsImagesWidget(movieDetails: movieDetails),
       MoviesRecomendationListWidget(movieId: movieDetails.id),
+      MoviesVediosListWidget(movieId: movieDetails.id),
     ];
   }
 

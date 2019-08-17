@@ -5,59 +5,62 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:package_info/package_info.dart';
+import 'package:movie_app/utils/app_colors.dart';
 
 class InfoView extends StatefulWidget {
-
-	@override
+  @override
   InfoViewState createState() {
     return new InfoViewState();
   }
 }
 
 class InfoViewState extends State<InfoView> {
-	PackageInfo _packageInfo = new PackageInfo(
-		appName: 'Unknown',
-		packageName: 'Unknown',
-		version: 'Unknown',
-		buildNumber: 'Unknown',
-	);
+  PackageInfo _packageInfo = new PackageInfo(
+    appName: 'Unknown',
+    packageName: 'Unknown',
+    version: 'Unknown',
+    buildNumber: 'Unknown',
+  );
 
   final TextStyle defaultStyle = TextStyle(fontSize: 16.0);
 
-	@override
-	void initState() {
-		super.initState();
-		_initPackageInfo();
-	}
+  @override
+  void initState() {
+    super.initState();
+    _initPackageInfo();
+  }
 
-	Future<Null> _initPackageInfo() async {
-		final PackageInfo info = await PackageInfo.fromPlatform();
-		setState(() {
-			_packageInfo = info;
-		});
-	}
+  Future<Null> _initPackageInfo() async {
+    final PackageInfo info = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = info;
+    });
+  }
 
-	@override
+  @override
   Widget build(BuildContext context) {
-    return DefaultTextStyle(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Center(
-              child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              buildAppTitle(),
-              buildAppUrl(),
-              buildHorizontalDivider(height: 0.0),
-              buildTmdbAttribution(),
-              buildLauncherIconAttribution()
-            ],
-          )),
-        ),
-        style: defaultStyle,
-        textAlign: TextAlign.center);
+    return Container(
+      color: AppColors.gradiantDarkColor,
+      child: DefaultTextStyle(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+                child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                buildAppTitle(),
+                buildAppUrl(),
+                buildHorizontalDivider(height: 0.0),
+                buildTmdbAttribution(),
+                buildLauncherIconAttribution()
+              ],
+            )),
+          ),
+          style: defaultStyle,
+          textAlign: TextAlign.center),
+    );
   }
 
   Widget buildTmdbAttribution() {
@@ -86,7 +89,8 @@ class InfoViewState extends State<InfoView> {
         overflow: TextOverflow.clip,
         text: TextSpan(style: defaultStyle.copyWith(fontSize: 16.0), children: [
           TextSpan(
-              text: "This app is free as in freedom and you can check out the source code "
+              text:
+                  "This app is free as in freedom and you can check out the source code "
                   "on github \n"),
           TextSpan(
               style: defaultStyle.copyWith(color: Colors.blue, fontSize: 14.0),
@@ -99,11 +103,13 @@ class InfoViewState extends State<InfoView> {
   }
 
   Widget buildAppTitle() {
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        SizedBox(height: 40.0, width: 40.0, child: Image.asset("assets/film_reel.png")),
+        SizedBox(
+            height: 40.0,
+            width: 40.0,
+            child: Image.asset("assets/film_reel.png")),
         Text(
           "$APP_NAME ${_packageInfo.version}",
           style: defaultStyle.copyWith(fontSize: 22.0),

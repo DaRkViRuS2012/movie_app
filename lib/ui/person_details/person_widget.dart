@@ -27,7 +27,7 @@ class PersonWidget extends StatelessWidget {
       {Key key,
       this.person,
       this.cast,
-      bool this.showLoading,
+      this.showLoading,
       this.errorMessage})
       : super(key: key);
   final loadingWidget = LoadingWidget(

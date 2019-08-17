@@ -15,7 +15,7 @@ class MovieDetailsWidget extends StatelessWidget {
   MovieDetailsWidget(
       {@required this.movieDetails,
       @required this.movieDetailsBloc,
-      bool this.hasFailed,
+      this.hasFailed,
       this.backgroundSize});
 
   @override

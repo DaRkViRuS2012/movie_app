@@ -1,9 +1,11 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:movie_app/constants/api_constants.dart';
 import 'package:movie_app/models/tmdb_movie_basic.dart';
 import 'package:movie_app/models/tmdb_movie_details.dart';
 import 'package:movie_app/models/tmdb_person_search_response.dart';
 import 'package:movie_app/navigation/router.dart';
 import 'package:movie_app/ui/common_widgets/poster_widget.dart';
+import 'package:movie_app/utils/app_colors.dart';
 import 'package:movie_app/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -89,7 +91,21 @@ class GridItem extends StatelessWidget {
 
     return Hero(
         child: Material(
-            color: Colors.transparent, child: Text(title, style: STYLE_TITLE)),
+          color: Colors.transparent,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AutoSizeText(
+              title,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Robot',
+                  shadows: [AppColors.shadow]),
+              maxLines: 4,
+            ),
+          ),
+        ),
         tag: "$id-$title");
   }
 

@@ -31,7 +31,6 @@ List<Widget> buildActions(context) {
   return <Widget>[
     searchAction(context),
     infoAction(context),
-    playViedo(context)
   ];
 }
 
@@ -48,13 +47,17 @@ IconButton infoAction(context) {
           context: context, builder: (BuildContext context) => InfoView()));
 }
 
-IconButton playViedo(context) {
+IconButton playViedo(context, videoId) {
   return IconButton(
-      icon: Icon(Icons.play_arrow),
+      icon: Icon(
+        Icons.play_circle_outline,
+        size: 70,
+        color: Colors.white,
+      ),
       onPressed: () {
         FlutterYoutube.playYoutubeVideoById(
             apiKey: YOUTUBE_API_KEY,
-            videoId: "cGCduKl5q90",
+            videoId: videoId,
             autoPlay: true, //default falase
             fullScreen: true //default false
             );

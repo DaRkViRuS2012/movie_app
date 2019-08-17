@@ -6,6 +6,6 @@ import 'package:movie_app/ui/tabs/tab_object.dart';
 class MovieListForGenreBloc extends MovieBloc {
   TMDBGenre genre;
 
-  MovieListForGenreBloc(TMDBApi api, TMDBGenre this.genre)
+  MovieListForGenreBloc(TMDBApi api, this.genre)
       : super(api: api, tabKey: TabKey.kGenres, genre: genre);
 }

@@ -12,17 +12,24 @@ TMDBMovieBasic _$TMDBMovieBasicFromJson(Map<String, dynamic> json) {
       id: json['id'] as int,
       video: json['video'] as bool,
       voteAverage: (json['vote_average'] as num)?.toDouble(),
-      title: json['title'] as String,
+      title: json['title'] != null
+          ? json['title'] as String
+          : json['name'] as String,
       popularity: (json['popularity'] as num)?.toDouble(),
       posterPath: json['poster_path'] as String,
       originalLanguage: json['original_language'] as String,
-      originalTitle: json['original_title'] as String,
+      originalTitle: json['original_title'] != null
+          ? json['original_title'] as String
+          : json['original_name'] as String,
       genreIds: (json['genre_ids'] as List)?.map((e) => e as int)?.toList(),
       backdropPath: json['backdrop_path'] as String,
       adult: json['adult'] as bool,
       overview: json['overview'] as String,
-      releaseDate: json['release_date'] as String);
+      releaseDate: json['release_date'] != null
+          ? json['release_date'] as String
+          : json['first_air_date'] as String);
 }
+//
 
 Map<String, dynamic> _$TMDBMovieBasicToJson(TMDBMovieBasic instance) =>
     <String, dynamic>{

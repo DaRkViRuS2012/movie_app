@@ -7,7 +7,6 @@ import 'package:movie_app/models/omdb_movie.dart';
 import 'package:movie_app/models/tmdb_movie_basic.dart';
 import 'package:movie_app/models/tmdb_movie_details.dart';
 import 'package:movie_app/models/tmdb_movie_response.dart';
-import 'package:movie_app/models/tmdb_movies_response.dart';
 import 'package:movie_app/models/tmdb_reviews_response.dart';
 import 'package:movie_app/ui/details_screen/movie_details_state.dart';
 import 'package:movie_app/ui/details_screen/movie_videos_state.dart';

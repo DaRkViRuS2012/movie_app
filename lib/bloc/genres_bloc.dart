@@ -10,7 +10,7 @@ class GenresBloc extends BlocBase {
   TMDBApi tmdbApi;
   bool fetchOnInit;
 
-  GenresBloc({this.tmdbApi, bool this.fetchOnInit}) {
+  GenresBloc({this.tmdbApi, this.fetchOnInit}) {
     if (fetchOnInit) {
       _streamController.addStream(_fetchGenres());
     }

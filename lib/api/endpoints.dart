@@ -36,7 +36,7 @@ class Endpoints {
     return '$TMDB_API_BASE_URL'
         '/movie/upcoming?api_key='
         '$TMDB_API_KEY'
-        '&include_adult=false&page=$page'; //&region=$region';
+        '&include_adult=false&page=$page&region=$region';
   }
 
   static String movieDetailsUrl(int movieId) {

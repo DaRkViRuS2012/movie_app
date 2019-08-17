@@ -16,6 +16,9 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="movie_app"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+                android:name="com.google.android.gms.ads.APPLICATION_ID"
+                android:value="ca-app-pub-6051100238610130~1117806013"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -30,9 +33,7 @@
             <meta-data
                 android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
                 android:value="true" />
-                <meta-data
-                android:name="com.google.android.gms.ads.APPLICATION_ID"
-                android:value="ca-app-pub-3940256099942544~1458002511"/>
+            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

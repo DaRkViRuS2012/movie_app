@@ -34,11 +34,7 @@ class MovieBloc extends BlocBase {
 
   Sink get nextPage => _nextPageController.sink;
 
-  MovieBloc(
-      {this.api,
-      TabKey this.tabKey,
-      TMDBGenre this.genre,
-      String this.region}) {
+  MovieBloc({this.api, this.tabKey, this.genre, this.region}) {
     _nextPageController.stream.listen(fetchNextPage);
     init();
   }

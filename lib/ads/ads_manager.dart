@@ -3,7 +3,7 @@ import 'package:movie_app/ads/ads.dart';
 
 class AdsManager {
   var _coins = 0;
-  static String adId = "ca-app-pub-6051100238610130/6725355919";
+  static String adId = "ca-app-pub-8183988315191327/5271182402";
   static setupAds() {
     var initOption = 1;
 

@@ -34,13 +34,15 @@ class _ImageLoaderState extends State<ImageLoader> {
   void initState() {
     _loadImage();
 
-    image?.image?.resolve(ImageConfiguration())?.addListener((i, b) {
-      mounted
-          ? setState(() {
-              _loaded = true;
-            })
-          : null;
-    });
+    image?.image?.resolve(ImageConfiguration())?.addListener(
+      ImageStreamListener((image, finished) {
+        mounted
+            ? setState(() {
+                _loaded = true;
+              })
+            : null;
+      }),
+    );
     super.initState();
   }
 

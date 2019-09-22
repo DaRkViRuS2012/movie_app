@@ -16,10 +16,10 @@ class InfoView extends StatefulWidget {
 
 class InfoViewState extends State<InfoView> {
   PackageInfo _packageInfo = new PackageInfo(
-    appName: 'Unknown',
-    packageName: 'Unknown',
-    version: 'Unknown',
-    buildNumber: 'Unknown',
+    appName: 'Aflamy',
+    packageName: 'com.nour.Aflamy',
+    version: '1.0.0',
+    buildNumber: '1',
   );
 
   final TextStyle defaultStyle = TextStyle(fontSize: 16.0);

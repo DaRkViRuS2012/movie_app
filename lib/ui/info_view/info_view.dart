@@ -17,7 +17,7 @@ class InfoView extends StatefulWidget {
 class InfoViewState extends State<InfoView> {
   PackageInfo _packageInfo = new PackageInfo(
     appName: 'Aflamy',
-    packageName: 'com.nour.Aflamy',
+    packageName: 'com.nour.movieapp',
     version: '1.0.0',
     buildNumber: '1',
   );
@@ -54,7 +54,8 @@ class InfoViewState extends State<InfoView> {
                 buildAppUrl(),
                 buildHorizontalDivider(height: 0.0),
                 buildTmdbAttribution(),
-                buildLauncherIconAttribution()
+                buildHorizontalDivider(height: 0.0),
+                Container()
               ],
             )),
           ),
@@ -88,16 +89,13 @@ class InfoViewState extends State<InfoView> {
         textAlign: TextAlign.center,
         overflow: TextOverflow.clip,
         text: TextSpan(style: defaultStyle.copyWith(fontSize: 16.0), children: [
-          TextSpan(
-              text:
-                  "This app is free as in freedom and you can check out the source code "
-                  "on github \n"),
+          TextSpan(text: "This app is build by Nour Araar\n"),
           TextSpan(
               style: defaultStyle.copyWith(color: Colors.blue, fontSize: 14.0),
-              text: "https://github.com/kserko/CineReel",
+              text: "https://www.nouraraar.com",
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  launchURL("https://github.com/kserko/CineReel");
+                  launchURL("https://www.nouraraar.com");
                 })
         ]));
   }

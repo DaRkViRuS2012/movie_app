@@ -111,11 +111,6 @@ class _MyTabbedPageState extends State<HomePage>
               ],
               context: context),
           body: tabBarView,
-          // new RaisedButton(
-          //     child: const Text('SHOW BANNER'),
-          //     onPressed: () {
-          //       Ads.showBannerAd();
-          //     }),
         ),
       ],
     );

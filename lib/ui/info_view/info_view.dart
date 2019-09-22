@@ -89,7 +89,7 @@ class InfoViewState extends State<InfoView> {
         textAlign: TextAlign.center,
         overflow: TextOverflow.clip,
         text: TextSpan(style: defaultStyle.copyWith(fontSize: 16.0), children: [
-          TextSpan(text: "This app is build by Nour Araar\n"),
+          TextSpan(text: "This App is Build and Designed by Nour Araar\n"),
           TextSpan(
               style: defaultStyle.copyWith(color: Colors.blue, fontSize: 14.0),
               text: "https://www.nouraraar.com",

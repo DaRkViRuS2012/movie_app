@@ -48,7 +48,7 @@ class AdsManager {
         Ads.contentUrl = 'http://www.animalsaspets.com';
         Ads.childDirected = false;
         Ads.testDevices = ['Samsung_Galaxy_SII_API_26:5554'];
-        Ads.testing = true;
+        Ads.testing = false;
         Ads.bannerListener = (MobileAdEvent event) {
           if (event == MobileAdEvent.opened) {
             print("This is the first listener.");

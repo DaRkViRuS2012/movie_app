@@ -9,7 +9,7 @@ class AdsManager {
 
     switch (initOption) {
       case 1:
-        Ads.init(adId, testing: true);
+        Ads.init(adId, testing: false);
 
         Ads.video.rewardedListener = (String rewardType, int rewardAmount) {
           // setState(() {
@@ -41,7 +41,7 @@ class AdsManager {
           if (event == MobileAdEvent.closed) print("Returned to the app.");
         };
 
-        Ads.init(adId, listener: eventListener, testing: true);
+        Ads.init(adId, listener: eventListener, testing: false);
 
         // You can set individual settings
         Ads.keywords = ['cats', 'dogs'];
@@ -110,12 +110,12 @@ class AdsManager {
         Ads.testDevices = ['Samsung_Galaxy_SII_API_26:5554'];
 
         /// Can set this at the init() function instead.
-        Ads.testing = true;
+        Ads.testing = false;
 
         break;
 
       case 6:
-        Ads.init(adId, testing: true);
+        Ads.init(adId, testing: false);
 
         Ads.eventListener = (MobileAdEvent event) {
           switch (event) {
@@ -149,7 +149,7 @@ class AdsManager {
         break;
 
       case 7:
-        Ads.init(adId, testing: true);
+        Ads.init(adId, testing: false);
 
         Ads.showBannerAd();
 
@@ -174,7 +174,7 @@ class AdsManager {
 
         break;
       case 8:
-        Ads.init(adId, testing: true);
+        Ads.init(adId, testing: false);
 
         Ads.banner.openedListener = () {
           print("This is the first listener when you open the banner ad.");
@@ -194,7 +194,7 @@ class AdsManager {
 
         break;
       case 9:
-        Ads.init(adId, testing: true);
+        Ads.init(adId, testing: false);
 
         Ads.screen.openedListener = () {
           print("This is the first listener when you open the full screen ad.");
@@ -215,7 +215,7 @@ class AdsManager {
 
         break;
       case 10:
-        Ads.init(adId, testing: true);
+        Ads.init(adId, testing: false);
 
         Ads.video.closedListener = () {
           print("You've closed the video.");
@@ -232,7 +232,7 @@ class AdsManager {
         break;
 
       default:
-        Ads.init(adId, testing: true);
+        Ads.init(adId, testing: false);
     }
 
     var one = Ads.appId;

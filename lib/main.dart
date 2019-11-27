@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
           appBloc.deviceLocale = locale;
         },
         title: title,
+        debugShowCheckedModeBanner: false,
         // theme: new ThemeData(
         //     dividerColor: Colors.white,
         //     brightness: Brightness.dark,

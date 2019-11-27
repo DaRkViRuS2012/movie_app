@@ -128,7 +128,7 @@ class MovieDetailsContentWidget extends StatelessWidget {
   Widget buildHeaderImage(BuildContext context) {
     return SizedBox(
       //0.32 is just a magic number that makes things not overlap even in smaller screens
-      height: MediaQuery.of(context).size.height * 0.32,
+      height: MediaQuery.of(context).size.height * 0.35,
       child: MovieDetailsHeaderWidget(
         backdropPath: movieDetails.movieBasic.backdropPath,
       ),
@@ -251,16 +251,6 @@ class MovieDetailsContentWidget extends StatelessWidget {
           ),
         ),
       );
-      // // Padding(
-      // //   padding: const EdgeInsets.all(8.0),
-      // //   child: Text(formattedReleaseDate,
-      // //       style: TextStyle(
-      // //         color: AppColors.lightWhite,
-      // //         fontSize: 14,
-      // //         fontWeight: FontWeight.bold,
-      // //       )),
-      // // ),
-
     }
     return Container();
   }

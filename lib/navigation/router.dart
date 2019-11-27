@@ -18,7 +18,7 @@ import 'package:flutter/widgets.dart';
 
 class Router {
   static void goToMovieDetailsScreen(
-      BuildContext context, TMDBMovieBasic movie, String backgroundSize) {
+    BuildContext context, TMDBMovieBasic movie, String backgroundSize) {
     Navigator.push(
       context,
       RouteTransition(

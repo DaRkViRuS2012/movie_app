@@ -61,24 +61,6 @@ class MovieListWidgetState extends State<MovieListWidget> {
                 final movie = this.widget.movies[index];
                 return PosterRow(movie: movie);
               })
-          //   Swiper(
-          // itemBuilder: (BuildContext context, int index) {
-          //   return PosterRow(movie: widget.movies[index]);
-          // },
-          // itemCount: widget.movies.length,
-          // //  pagination: new SwiperPagination(),
-          // //   control: new SwiperControl(),
-          // controller: _swiperController,
-          // viewportFraction: 0.85,
-          // scale: 1.0,
-          // onIndexChanged: (index) {
-          //   print(index);
-          //   print(widget.movies.length);
-          //   if (index >= widget.movies.length - 1) {
-          //     this.widget.movieBloc.nextPage.add(this.widget.tabKey);
-          //   }
-          // },
-          // ),
           );
     } else {
       return Stack(

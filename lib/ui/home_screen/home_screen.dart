@@ -35,8 +35,8 @@ class _MyTabbedPageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    AdsManager.setupAds();
-    AdsManager.showBannerAd();
+    // AdsManager.setupAds();
+    // AdsManager.showBannerAd();
   }
 
   @override
